@@ -1,0 +1,538 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Deli Order Form</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+ 
+  <style> 
+  
+  body {
+  font-family: 'Raleway', sans-serif;
+  background-color: #fafafa;
+  background-image: url(https://media.istockphoto.com/id/876735004/vector/present-card-with-cheese-background.jpg?s=612x612&w=0&k=20&c=Mv2kaOwvlU1AzciUxMQlNjZMJBcFae6Hpx7q2NKjxX4=);
+  background-repeat: repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-size: 48px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: brown;
+  font-family: 'Kaushan Script', cursive;
+}
+
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #fff;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+div {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+select,
+input[type="number"] {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+select {
+  height: 50px;
+  color: #666;
+}
+
+button[type="button"] {
+  background-color: #ef233c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+button[type="button"]:hover {
+  background-color: #d90429;
+  
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+li span {
+  font-weight: bold;
+}
+
+p {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 50px 0;
+  text-align: right;
+  color: #ef233c;
+  font-family: 'Kaushan Script', cursive;
+}
+
+#total {
+  color: #4CAF50;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+#estimated-time {
+  color: #ef233c;
+  font-weight: bold;
+  font-size: 36px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#item-reviews {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+#item-reviews li {
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+}
+
+#item-reviews li:before {
+  content: "\f005";
+  font-family: FontAwesome;
+  font-size: 20px;
+}
+
+#clear-order {
+  background-color: #ff5733;
+  color: white;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.5s ease-out;
+}
+
+#clear-order {
+  margin-top: 10px;
+  margin-right: 10px;
+  float: right;
+}
+
+#clear-order:hover {
+  background-color: #ff8c66;
+}
+
+#clear-order:active {
+  animation: shake 0.2s ease-in-out;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes highlight {
+  0% { box-shadow: none; }
+  50% { box-shadow: 0px 0px 10px red; }
+  100% { box-shadow: none; }
+}
+
+.highlight {
+  animation-name: highlight;
+  animation-duration: 1s;
+}
+
+#review-btn {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 25px;
+}
+
+
+#card-payment {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+}
+
+#cash-payment {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #6c757d;
+  color: #fff;
+  border: none;
+}
+
+.spacer {
+  width: 20%; 
+  display: inline-block;
+}
+ #see-reviews-btn {
+        display: none;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+	  
+      #see-reviews-btn:hover {
+        background-color: #0056b3;
+      }
+  
+  </style>
+  
+  <body>
+    <div class="container">
+      <h1>Deli Order Form</h1>
+      <form id="order-form">
+        <div class="form-group">
+          <label for="item-type">Choose an item:</label>
+          <select id="item-type" class="form-control">
+            <option value="">Select Item</option>
+            <option value="Cheese">Cheese</option>
+            <option value="Ham">Ham</option>
+            <option value="Roast Beef">Roast Beef</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="item-option">Choose an option:</label>
+          <select id="item-option" class="form-control">
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="quantity">Quantity (lbs):</label>
+          <input type="number" id="quantity" class="form-control" min="0" step="0.01">
+        </div>
+        <div class="form-group">
+  <button type="button" id="add-item" class="btn btn-primary">Add to order</button>
+  <button type="button" id="clear-order" class="btn btn-danger">Clear order</button>
+</div>
+        <div class="form-group">
+          <ul id="order-list" class="order-list"></ul>
+          <p>Total: $<span id="total"></span></p>
+          <button type="button" id="save-order">Submit Order and Save to File</button>
+          
+          <button id="review-btn">Leave a Review</button>
+		  <button onclick="location.href='file:///C:/Users/chris/Desktop/rev.html'" id="see-reviews-btn" style="display: none;">See Other Reviews</button>
+                    
+        </div>
+        <div class="form-group">
+  <button id="card-payment">Pay with Card</button>
+  <div class="spacer"></div> 
+  <button type="button" id="cash-payment" class="btn btn-secondary">Pay with Cash</button>
+</div>
+      </form>
+      
+    </div>
+    
+<div>
+  <p>Estimated time: <span id="estimated-time"></span></p>
+</div>
+<a href="file:///C:/Users/chris/Desktop/rev.html" class="button">Reviews</a>
+    <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+    import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBUtJF6sVHUzg7Vtwx9-VqADuLq-PbAgSI",
+  authDomain: "deli-b43ac.firebaseapp.com",
+  databaseURL: "https://deli-b43ac-default-rtdb.firebaseio.com",
+  projectId: "deli-b43ac",
+  storageBucket: "deli-b43ac.appspot.com",
+  messagingSenderId: "251942833711",
+  appId: "1:251942833711:web:2001b31eb9ae2367c900da",
+  measurementId: "G-9W3Y3P31RE"
+};
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+
+    const reviewBtn = document.getElementById('review-btn');
+	const seeReviewsBtn = document.getElementById("see-reviews-btn");
+    reviewBtn.addEventListener('click', () => {
+      const name = prompt("What is your name?");
+      const review = prompt("Please leave a review:");
+      const rating = prompt("Please enter your rating (1-10):");
+	  seeReviewsBtn.style.display = "block";
+
+      if (name && review && rating) {
+        const newRef = push(ref(database, 'reviews'));
+        set(newRef, { name, review, rating })
+          .then(() => {
+            console.log('Review saved to database!');
+          })
+          .catch((error) => {
+            console.error('Error saving review:', error);
+          });
+      }
+    });
+  </script>
+    
+    
+
+    <script>  
+const orderForm = document.getElementById("order-form");
+const itemTypeSelect = document.getElementById("item-type");
+const itemOptionSelect = document.getElementById("item-option");
+const quantityInput = document.getElementById("quantity");
+const addItemButton = document.getElementById("add-item");
+const orderList = document.getElementById("order-list");
+const totalSpan = document.getElementById("total");
+
+const order = [];
+
+function calculateTotal() {
+  let total = 0;
+  const listItems = orderList.getElementsByTagName("li");
+  for (let i = 0; i < listItems.length; i++) {
+    const itemText = listItems[i].textContent;
+    const itemPrice = parseFloat(itemText.substring(itemText.lastIndexOf("$") + 1));
+    total += itemPrice;
+  }
+  return total.toFixed(2);
+}
+
+addItemButton.addEventListener("click", function() {
+  const selectedItem = JSON.parse(itemOptionSelect.value);
+  const quantity = Number(quantityInput.value);
+  if (quantity > 0) {
+    const item = {
+      name: selectedItem.name,
+      price: selectedItem.price,
+      quantity: quantity
+    };
+    order.push(item);
+    const listItem = document.createElement("li");
+    listItem.textContent = item.quantity + " lbs of " + item.name + " - $" + (item.price * item.quantity).toFixed(2) + "\n"; 
+    orderList.appendChild(listItem);
+    totalSpan.textContent = calculateTotal();
+  }
+});
+
+itemTypeSelect.addEventListener("change", function() {
+  const itemType = this.value;
+  let options;
+  switch (itemType) {
+    case "Cheese":
+      options = [
+        { name: "Cheddar", price: 4.99 },
+        { name: "Swiss", price: 5.99 },
+        { name: "American", price: 3.99 },
+        { name: "Provolone", price: 6.99 }
+      ];
+      break;
+    case "Ham":
+      options = [
+        { name: "Honey Ham", price: 8.99 },
+        { name: "Smoked Ham", price: 9.99 },
+        { name: "Black Forest Ham", price: 10.99 },
+        { name: "Maple Glazed Ham", price: 11.99 },
+        { name: "Virginia Ham", price: 12.99 },
+        { name: "Canadian Bacon", price: 13.99 }
+      ];
+      break;
+    case "Roast Beef":
+      options = [
+        { name: "Rare Roast Beef", price: 12.99 },
+        { name: "Medium Roast Beef", price: 13.99 },
+        { name: "Well-Done Roast Beef", price: 14.99 },
+        { name: "Prime Rib Roast Beef", price: 15.99 },
+        { name: "Corned Beef", price: 16.99 },
+        { name: "Pastrami", price: 17.99 }
+      ];
+      break;
+    default:
+      options = [];
+  }
+  itemOptionSelect.innerHTML = "";
+  for (let i = 0; i < options.length; i++) {
+    const option = options[i];
+    const optionElement = document.createElement("option");
+    optionElement.textContent = option.name + " - $" + option.price.toFixed(2);
+    optionElement.value = JSON.stringify(option);
+    itemOptionSelect.appendChild(optionElement);
+  }
+});
+
+orderForm.addEventListener("submit", function(event) {
+  event.preventDefault();
+});
+
+document.getElementById("clear-order").addEventListener("click", function() {
+  orderList.innerHTML = "";
+  total.innerHTML = "0.00";
+});
+
+function getRandomTime() {
+  return Math.floor(Math.random() * 16) + 5;
+}
+
+function updateEstimatedTime() {
+  var estimatedTime = getRandomTime();
+  var timeElement = document.getElementById("estimated-time");
+  timeElement.innerHTML = estimatedTime + " minutes";
+}
+
+window.onload = function() {
+  updateEstimatedTime();
+};
+
+addItemButton.addEventListener("click", function() {
+  updateEstimatedTime();
+  // ...
+});
+window.onload = function() {
+  updateEstimatedTime();
+};
+
+document.getElementById("save-order").addEventListener("click", function() {
+  var orderList = document.getElementById("order-list");
+  var total = document.getElementById("total");
+  var orderData = "Order List:\n" + orderList.textContent + "\nTotal: $" + total.textContent;
+
+  orderList.setAttribute("data-saved", "true");
+  
+  var listItems = orderList.getElementsByTagName("li");
+  for (var i = 0; i < listItems.length; i++) {
+    var reviewButton = listItems[i].querySelector("button");
+    if (reviewButton) {
+      listItems[i].removeChild(reviewButton);
+    }
+  }
+  
+  var blob = new Blob([orderData], {type: "text/plain;charset=utf-8"});
+
+  var url = URL.createObjectURL(blob);
+
+  var link = document.createElement("a");
+  link.setAttribute("href", url);
+  link.setAttribute("download", "order.txt");
+  link.style.display = "none";
+
+  document.body.appendChild(link);
+  link.click();
+  
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+});
+
+function generateCardNumber() {
+  let cardNumber = "";
+  for (let i = 0; i < 16; i++) {
+    cardNumber += Math.floor(Math.random() * 10);
+    if (i % 4 === 3 && i < 15) {
+      cardNumber += " ";
+    }
+  }
+  return cardNumber;
+}
+
+function generateExpirationDate() {
+  const months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+  const year = new Date().getFullYear() + Math.floor(Math.random() * 6);
+  const month = months[Math.floor(Math.random() * 12)];
+  return month + "/" + year.toString().substring(2);
+}
+
+function generateCardCode() {
+  let cardCode = "";
+  for (let i = 0; i < 3; i++) {
+    cardCode += Math.floor(Math.random() * 10);
+  }
+  return cardCode;
+}
+
+function handleCardPayment() {
+  const name = prompt("Enter your name:");
+  if (name) {
+    const cardNumber = generateCardNumber();
+    const expirationDate = generateExpirationDate();
+    const cardCode = generateCardCode();
+    alert("Thank you for your payment!\n\nCard Number: " + cardNumber + "\nExpiration Date: " + expirationDate + "\nCard Code: " + cardCode);
+  }
+}
+
+const cardPaymentButton = document.getElementById("card-payment");
+cardPaymentButton.addEventListener("click", handleCardPayment);
+
+const cashPaymentButton = document.getElementById("cash-payment");
+
+cashPaymentButton.addEventListener("click", function() {
+  alert("This is an online store. We do not accept cash payments. Please select another payment method.");
+}); </script>
+        
+  </body>
+</html>
